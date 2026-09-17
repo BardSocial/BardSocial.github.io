@@ -1,0 +1,67 @@
+---
+const external = { target: '_blank', rel: 'noopener noreferrer' };
+---
+
+<footer class="footer">
+  <div class="content">
+    <div class="logo">
+      <img src="/images/logo.png" alt="Bard logo" />
+    </div>
+    <div>
+      <p class="heading">Product</p>
+      <a href="/support">Support</a>
+      <a href="https://bard.art/" {...external}>App</a>
+    </div>
+    <div>
+      <p class="heading">Company</p>
+      <a href="/about">About</a>
+      <a href="https://ko-fi.com/joeczepil" {...external}>Support us on Ko-fi</a>
+    </div>
+    <div>
+      <p class="heading">Contact</p>
+      <a href="https://bsky.app/profile/joeatbard.bsky.social" {...external}>Bsky</a>
+      <a href="https://www.youtube.com/@joeatbard" {...external}>Youtube</a>
+      <a href="mailto:hello@bard.art" {...external}>Email</a>
+    </div>
+    <div>
+      <p class="heading">Legal</p>
+      <a href="https://www.termsfeed.com/live/a4effae6-987a-4143-b04e-8861ac051e56" {...external}>Terms and Conditions</a>
+      <a href="https://www.termsfeed.com/live/5a2c488d-4fd6-477a-8110-85aa653b9f49" {...external}>Privacy Policy</a>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    padding: 42px 20px 60px 20px;
+    background-color: var(--color-card-bg);
+    border-top: 1px solid var(--color-card-border);
+    margin-top: 40px;
+  }
+  .content {
+    max-width: 1020px;
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+    flex-wrap: wrap;
+    gap: 24px;
+  }
+  .content img {
+    width: 120px;
+  }
+  .content > div {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding-top: 18px;
+  }
+  .heading {
+    margin-bottom: 12px;
+    font-weight: 500;
+  }
+  @media (max-width: 650px) {
+    .logo {
+      display: none;
+    }
+  }
+</style>

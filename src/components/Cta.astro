@@ -1,0 +1,65 @@
+---
+/**
+ * Call-to-action block. Default: a "Go to Bard" app link.
+ * `follow` swaps the button for Bluesky/YouTube links (replaces the old
+ * email-subscribe form, whose API endpoint no longer exists).
+ */
+interface Props {
+  header: string;
+  subHeader: string;
+  follow?: boolean;
+}
+const { header, subHeader, follow = false } = Astro.props;
+const external = { target: '_blank', rel: 'noopener noreferrer' };
+---
+
+<div class="cta">
+  <h4 class="item-header">{header}</h4>
+  <p class="text">{subHeader}</p>
+  {
+    follow ? (
+      <div class="actions">
+        <a href="https://bsky.app/profile/joeatbard.bsky.social" {...external}>
+          <span class="primary-button">Follow on Bluesky</span>
+        </a>
+        <a href="https://www.youtube.com/@joeatbard" {...external}>
+          <span class="primary-button">Subscribe on YouTube</span>
+        </a>
+      </div>
+    ) : (
+      <a href="https://bard.art/" {...external}>
+        <span class="primary-button">Go to Bard</span>
+      </a>
+    )
+  }
+</div>
+
+<style>
+  .cta {
+    background-color: var(--color-cta-bg);
+    border-radius: 8px;
+    padding: 60px 18px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    margin: 5rem 0px;
+    gap: 12px;
+    align-items: center;
+  }
+  .cta h4,
+  .cta p {
+    color: var(--color-cta-font);
+  }
+  .cta p {
+    max-width: 400px;
+    margin: auto;
+  }
+  .actions {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 18px;
+  }
+</style>

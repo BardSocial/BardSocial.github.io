@@ -1,0 +1,96 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHeader from '../components/PageHeader.astro';
+
+const kofi = 'https://ko-fi.com/joeczepil';
+
+const faqs = [
+  {
+    question: "Can I sign up if I'm not an artist?",
+    answer:
+      "Absolutely, it's encouraged! Even if you're not a creator, we want Bard to be a place where you can view and support the creators you love!",
+  },
+  {
+    question: 'Is Bard for me?',
+    answer:
+      "Bard is for everyone. There are some base skills required to be able to tell a story through any medium but if you don't feel like you have those, we are here to help you improve your creative skills! Whether that's painting, drawing, writing, singing, voice acting, or music producing.",
+  },
+  {
+    question: 'How can I support Bard?',
+    answer: 'The best way to support us is by buying us a coffee on Ko-fi. Every bit helps keep the servers running.',
+    link: { href: kofi, title: 'Support Bard on Ko-fi', external: true },
+  },
+  {
+    question: 'Can I request features?',
+    answer:
+      "Yes, absolutely! At Bard, the users really drive the platform forward and we are all ears. The easiest way to chat to us about features is through Discord, but if that isn't your thing, feel free to contact us through any method on our Contact page.",
+  },
+  {
+    question: 'Why is it called Bard?',
+    answer:
+      "Bard's are poets, composers, and story tellers of the epic adventures and deeds of heroes. And really, we are all story tellers. Storytelling helps our audience connect with the creations we are making and it helps facilitate creating more engaging experiences for all.",
+  },
+  {
+    question: 'Will Bard always be free?',
+    answer:
+      "Yes, as long as there is a community willing to support it. We are committed to keep Bard ad free and a platform that cares more about the artists than making millions. That being said, we do need money to live so if you can, consider supporting us on Ko-fi.",
+    link: { href: kofi, title: 'Support Bard on Ko-fi', external: true },
+  },
+  {
+    question: 'Do I have to collaborate?',
+    answer:
+      "No, not at all. If all you want to do is post your artwork then that's totally cool. What you might find is that other creators will find your artwork and collaborate with YOU! Perhaps then you will understand why collaboration is such a great part of the platform and you will be encouraged to collaborate more with others.",
+  },
+  {
+    question: 'What kind of artwork should I post on Bard?',
+    answer:
+      "Bard is primarily a storytelling and world building platform, but stories can be told through many mediums. If you feel like someone could write a story, do a voice line, create a piece of music, draw something, sing, write a poem, or anything similar to those for your post then it's perfect for Bard.",
+  },
+  {
+    question: 'Does Bard support NSFW content?',
+    answer: 'No, not currently. Nipples are ok.',
+  },
+];
+---
+
+<Layout title="Support">
+  <PageHeader header="Support" subHeader="Everyone needs a little support on whatever journey they take" />
+
+  <section class="section">
+    <h3 class="section-header">
+      We get these questions a lot. Perhaps they will help you so you can continue on with your tales of adventure.
+    </h3>
+
+    <div class="faqs">
+      {
+        faqs.map(({ question, answer, link }) => (
+          <div class="faq">
+            <h4 class="item-header">{question}</h4>
+            <p class="text">{answer}</p>
+            {link && (
+              <p class="subtext faq-link">
+                <a href={link.href} {...(link.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}>
+                  {link.title}
+                </a>
+              </p>
+            )}
+          </div>
+        ))
+      }
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .faqs {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .faq {
+    padding: 24px 0;
+  }
+  .faq-link {
+    margin-top: 12px;
+  }
+</style>

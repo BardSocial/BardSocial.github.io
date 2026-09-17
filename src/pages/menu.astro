@@ -1,0 +1,27 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Menu | Bard" bare>
+  <nav class="menu">
+    <a href="/">Home</a>
+    <a href="/about">About</a>
+    <a href="/support">Support</a>
+    <a href="https://bard.art/" target="_blank" rel="noopener noreferrer">App</a>
+  </nav>
+</Layout>
+
+<style>
+  .menu {
+    width: 100vw;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
+    text-align: center;
+  }
+  .menu a {
+    border-bottom: 1px solid var(--color-border);
+    padding: 12px 0;
+  }
+</style>

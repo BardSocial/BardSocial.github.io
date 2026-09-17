@@ -1,0 +1,52 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHeader from '../components/PageHeader.astro';
+
+const birthDate = new Date('1994-10-28');
+const today = new Date();
+let age = today.getFullYear() - birthDate.getFullYear();
+const m = today.getMonth() - birthDate.getMonth();
+if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) age--;
+---
+
+<Layout title="About">
+  <PageHeader header="About" subHeader="Learn a bit the team and the origins of Bard" />
+
+  <section class="section">
+    <h3 class="section-header">What is Bard?</h3>
+    <p class="text">
+      Storytelling is one of the easiest ways to connect with others. It brings us together through shared emotional
+      experiences. Bard is a platform where storytelling and world building with others is at the heart of what we do.
+      We want to create experiences for others that are somewhere less than a full cinematic experience but more than
+      an instagram post. A place where creativity is expressed, but also fully experienced by others. And most
+      importantly, a place for people to connect over the stories that they're sharing.
+    </p>
+  </section>
+
+  <section class="section">
+    <h3 class="section-header">About Me</h3>
+    <p class="text">
+      Hi! I'm Joe, the sole person behind Bard. I'm <span data-birthdate="1994-10-28">{age}</span>, from BC Canada, and
+      I have a corgi named Gimli. I went to school for software engineering and business in 2012. Soundtracks and
+      original compositions on Youtube were a staple that got me through school but I often wondered, how much money
+      were these channels, that take other peoples music and other peoples art, making? Why don't I build a platform
+      that allows the creators themselves to combine their complimentary artwork with others and get paid for it?
+      That's how Bard started but since then I have learned much about the creative industries and we have adapted
+      into a storytelling and world building platform. I've also picked up my old creative hobbies and found new ones
+      and for that I am grateful.
+    </p>
+  </section>
+</Layout>
+
+<script>
+  // Keep the age current between deploys; the build-time value is the fallback.
+  const el = document.querySelector<HTMLElement>('[data-birthdate]');
+  if (el) {
+    const birth = new Date(el.dataset.birthdate!);
+    const now = new Date();
+    let age = now.getFullYear() - birth.getFullYear();
+    const m = now.getMonth() - birth.getMonth();
+    if (m < 0 || (m === 0 && now.getDate() < birth.getDate())) age--;
+    el.textContent = String(age);
+  }
+</script>

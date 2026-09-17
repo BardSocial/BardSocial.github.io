@@ -1,0 +1,63 @@
+---
+import '../styles/global.css';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+  /** The /menu page renders bare: no navbar, footer, or page padding. */
+  bare?: boolean;
+}
+
+const {
+  title,
+  description = 'Bard is a community based storytelling social media platform for creatives, including illustrators, artists, music producers, writers, voice actors, poets, and any other visual, audio, or written art forms',
+  bare = false,
+} = Astro.props;
+
+const ogImage = 'https://dkt4eyd7dv0ic.cloudfront.net/company/banner-green.jpg';
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content={ogImage} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:creator" content="@BardSocial" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta property="twitter:image" content={ogImage} />
+    <link rel="icon" href="/favicon-32x32.png" type="image/png" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <link rel="apple-touch-icon" sizes="192x192" href="/icons/icon-192x192.png" />
+    <script src="https://cdn.usefathom.com/script.js" data-site="WZYELUGA" defer is:inline></script>
+  </head>
+  <body>
+    <div class:list={['page', { bare }]}>
+      {!bare && <Navbar />}
+      <main><slot /></main>
+    </div>
+    {!bare && <Footer />}
+  </body>
+</html>
+
+<style>
+  .page {
+    margin: 0 auto 40px auto;
+    max-width: 1020px;
+    padding: 0 1.0875rem 1.45rem;
+  }
+  .page.bare {
+    padding: 0;
+    margin: 0;
+    max-width: none;
+  }
+</style>

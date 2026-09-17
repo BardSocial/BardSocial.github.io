@@ -1,0 +1,60 @@
+---
+const links = [
+  { href: '/about', label: 'About' },
+  { href: '/support', label: 'Support' },
+];
+---
+
+<nav class="navbar">
+  <a href="/" aria-label="Bard home">
+    <img src="/images/logo.png" alt="Bard Logo" />
+  </a>
+
+  <div class="options">
+    {links.map(({ href, label }) => <a href={href}>{label}</a>)}
+    <a href="https://bard.art/" target="_blank" rel="noopener noreferrer">App</a>
+  </div>
+
+  <a href="/menu" class="mobile-menu" aria-label="Open menu">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </a>
+</nav>
+
+<style>
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    margin: 4rem 0;
+    align-items: center;
+  }
+  .navbar img {
+    height: 3rem;
+  }
+  .navbar a {
+    font-size: 22px;
+  }
+  .options {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+  .mobile-menu {
+    display: none;
+  }
+  .mobile-menu svg {
+    width: 32px;
+    height: 32px;
+  }
+  @media (max-width: 600px) {
+    .options {
+      display: none;
+    }
+    .mobile-menu {
+      display: block;
+    }
+  }
+</style>

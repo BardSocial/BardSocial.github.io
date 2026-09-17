@@ -1,0 +1,20 @@
+---
+/** Serves /images/<name>.webp with a .png fallback, matching the old site's <picture> pairs. */
+interface Props {
+  name: string;
+  alt: string;
+  webpOnly?: boolean;
+}
+const { name, alt, webpOnly = false } = Astro.props;
+---
+
+{
+  webpOnly ? (
+    <img src={`/images/${name}.webp`} alt={alt} loading="lazy" />
+  ) : (
+    <picture>
+      <source srcset={`/images/${name}.webp`} type="image/webp" />
+      <img src={`/images/${name}.png`} alt={alt} loading="lazy" />
+    </picture>
+  )
+}

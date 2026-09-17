@@ -1,0 +1,283 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import Picture from '../components/Picture.astro';
+import Cta from '../components/Cta.astro';
+
+const steps = [
+  {
+    header: 'It’s time for a change',
+    text: 'You spend 12 hours on a painting, post it, half your followers see it, you get some likes, comments, and a bit of dopamine',
+    image: 'step1',
+    alt: 'An image of a social media feed and like buttons',
+  },
+  {
+    header: "Let's try something new together",
+    text: 'We believe that creating art is all about connecting with others and what better way to do that than storytelling',
+    image: 'step2',
+    alt: 'An image of a story',
+  },
+  {
+    header: 'Post your work',
+    text: 'We support visual work, music, voice lines, songs, poems, stories, and more!',
+    image: 'step3',
+    alt: 'A painting',
+  },
+  {
+    header: 'Watch others collaborate with you',
+    text: 'Anyone can seamlessly pair their work with yours, on the fly, an unlimited number of times. Usually collaboration requires a lot of planning, but not here.',
+    image: 'step4',
+    alt: 'A painting with music being added to it',
+  },
+  {
+    header: 'Experiment with different mediums',
+    text: 'Storytelling is done through all sorts of mediums. Sing a song, let music tell your tale, or bring the visuals together with a painting',
+    image: 'step5',
+    alt: 'A collaboration with writing being added to it',
+  },
+  {
+    header: 'Rejoice in the experiences you create',
+    text: 'It creates an emotional experience that connects with you, your peers, and others',
+    image: 'step6',
+    alt: 'A complete collaboration of art',
+  },
+];
+
+const features = [
+  'Seamless collaboration',
+  'No ads',
+  "No 'algorithm'",
+  'Chronological feeds',
+  'That old internet feel',
+  'Customization',
+  'Custom themes',
+  'Multi media post types',
+  'Easy upload',
+  'Worldbuilding',
+];
+const half = Math.ceil(features.length / 2);
+---
+
+<Layout
+  title="Bard | Community based storytelling social media platform"
+  description="A storytelling platform for visual, audio, and written creators. Seamlessly bring your stories together with the help of others!"
+>
+  <div class="hero">
+    <PageHeader
+      header="Creating stories together"
+      subHeader="A community based storytelling platform for visual, audio, and written creators. Seamlessly bring your stories together with the help of others!"
+    />
+    <Picture name="hero" alt="Image of collaboration" />
+  </div>
+
+  <Cta header="Become a Bard!" subHeader="Sign up for the platform" />
+
+  <section class="section">
+    <div class="text-indent">
+      <h4 class="section-text">
+        Existing social media platforms are poor at fostering communities and are sometimes outright exhausting for
+        creators
+      </h4>
+    </div>
+  </section>
+
+  {
+    steps.map(({ header, text, image, alt }, i) => (
+      <div class:list={['step', i % 2 === 0 ? 'image-right' : 'image-left', { first: i === 0, last: i === steps.length - 1 }]}>
+        <div>
+          <h3 class="section-header">{header}</h3>
+          <p class="text">{text}</p>
+        </div>
+        <Picture name={image} alt={alt} />
+      </div>
+    ))
+  }
+
+  <section class="section">
+    <div class="text-indent">
+      <h4 class="section-text">
+        Like Bards in a tavern, we encourage open collaboration and offer a warm, cozy place to jam with other creators
+        and meet new friends online. Tell the stories that are currently just in your imagination and we'll work on
+        sharing your work with as many people as possible!
+      </h4>
+    </div>
+  </section>
+
+  <div class="showcase">
+    <Picture name="showcase" alt="A showcase of collaborations" />
+  </div>
+
+  <Cta header="Stay up to date" subHeader="Follow along with everything that we are doing" follow />
+
+  <section class="section">
+    <div class="text-indent">
+      <h3 class="section-header">Not convinced it's for you? Hear what our users have to say</h3>
+      <p class="text">
+        Collaborating with complete strangers is always an act of trust, and this platform gave me the confidence to
+        share my work freely without fear of losing attribution. And then when I got to read the delighted comments by
+        artists for whom sharing work was usually a one-way street, it brought me so much joy!
+      </p>
+      <div class="testimonial">
+        <Picture name="charra" alt="Charra's profile picture" />
+      </div>
+      <p class="text">
+        As an illustrator, I never knew that I was missing the opportunity to easily collaborate with musicians and
+        writers. It's an amazing feeling to bring your creations more depth with the help of others and to explore more
+        of your own creativity through the language of other great artists. On top of that, it's a great way to make
+        meaningful and enriching connections!
+      </p>
+      <div class="testimonial">
+        <Picture name="federfarbe" alt="Federfarbe's profile picture" />
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="text-indent">
+      <h4 class="section-text">
+        To tie it altogether, we also offer the ability to create collections, which empower artists to collaborate on
+        entire worlds together.
+      </h4>
+    </div>
+  </section>
+
+  <div class="showcase">
+    <Picture name="collections" alt="A showcase of art on Bard" webpOnly />
+  </div>
+
+  <Cta header="Build your own world" subHeader="Sign up to join contribute today" />
+
+  <section class="section">
+    <div class="text-indent">
+      <h4 class="section-text">And if you need some final convincing, here's a list of everything we offer</h4>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="text-indent">
+      <h3 class="section-header">Tavern services</h3>
+      <p class="text">Services we currently offer</p>
+    </div>
+    <div class="features">
+      <div>
+        {features.slice(0, half).map((feature) => <p class="list-item">{feature}</p>)}
+      </div>
+      <div>
+        {features.slice(half).map((feature) => <p class="list-item">{feature}</p>)}
+      </div>
+    </div>
+  </section>
+
+  <Cta header="Sign me up!" subHeader="It's time to start collaborating with others" />
+</Layout>
+
+<style>
+  .hero {
+    display: flex;
+    gap: 40px;
+  }
+  .hero > :global(div) {
+    flex: 3;
+  }
+  .hero :global(picture) {
+    width: 100%;
+    height: auto;
+    flex: 2;
+    align-self: center;
+    margin-right: -2rem;
+  }
+  @media (max-width: 1000px) {
+    .hero :global(picture) {
+      margin-right: 0;
+    }
+  }
+  @media (max-width: 800px) {
+    .hero :global(picture) {
+      display: none;
+    }
+  }
+
+  .step {
+    position: relative;
+    margin-bottom: 15rem;
+    display: flex;
+    align-items: center;
+    gap: 60px;
+  }
+  .step.first {
+    margin-top: 5rem;
+  }
+  .step.last {
+    margin-bottom: 5rem;
+  }
+  .step > div {
+    position: relative;
+    max-width: 50%;
+  }
+  .step :global(picture) {
+    max-width: 50%;
+  }
+  .step p {
+    color: var(--color-subtext);
+  }
+  .step.image-right {
+    flex-direction: row;
+  }
+  .step.image-right :global(picture) {
+    margin-right: -4rem;
+  }
+  .step.image-left {
+    flex-direction: row-reverse;
+  }
+  .step.image-left :global(picture) {
+    margin-left: -4rem;
+  }
+  @media (max-width: 1160px) {
+    .step :global(picture) {
+      margin-right: 0 !important;
+      margin-left: 0 !important;
+    }
+  }
+  @media (max-width: 1000px) {
+    .step.image-right,
+    .step.image-left {
+      flex-direction: column;
+      margin-bottom: 8rem;
+    }
+    .step > div {
+      max-width: 90%;
+    }
+    .step :global(picture) {
+      max-width: 60%;
+    }
+  }
+  @media (max-width: 600px) {
+    .step :global(picture) {
+      max-width: 90%;
+    }
+  }
+
+  .showcase {
+    margin: 60px 0;
+  }
+  .testimonial {
+    margin-bottom: 36px;
+  }
+  .testimonial :global(img) {
+    height: 50px;
+    margin-top: 8px;
+  }
+
+  .features {
+    padding: 18px;
+    background-color: var(--color-card-bg);
+    border-radius: 6px;
+    display: flex;
+    align-items: stretch;
+    margin-bottom: 18px;
+    gap: 10px;
+  }
+  .features > div {
+    flex: 1;
+  }
+</style>
